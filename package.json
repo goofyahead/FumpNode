@@ -1,0 +1,17 @@
+{
+	"name": "Fump",
+	"description": "Link server app",
+	"version": "0.0.1",
+	"private": "true",
+	"dependencies": {
+		"express": "3.X"
+	},
+	"engines": {
+		"node": "0.8.x",
+		"npm": "1.1.x"
+	},
+	"subdomain": "goofyahead.manageat",
+	"scripts": {
+		"start": "server.js"
+	}
+}

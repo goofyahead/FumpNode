@@ -1,0 +1,26 @@
+
+define(['backbone'], function (Backbone){
+	var KeyHandler = Backbone.View.extend({
+		render: function() {
+			this.$el.html('<div> holaaa vista </div> <br> <input> </input>');
+		},
+
+		events: {
+			'keydown' : 'keyHandle'
+		},
+
+		keyHandle: function(e) {
+			var timeStamp = new Date().getTime();
+			console.log('key pressed' + e.keyCode + ' : ' + new Date().getTime());
+			if (e.keyCode == 32) {
+				console.log('space pressed, should call API');
+				$.post("/api/fump", { 'timestamp' : timeStamp, 'id' : 12345 },
+				  function(data){
+				    console.log(data); // John
+				  }, "json");
+			}
+		}
+	});
+
+	return KeyHandler;
+});
