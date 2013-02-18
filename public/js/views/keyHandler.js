@@ -1,5 +1,5 @@
 
-define(['backbone'], function (Backbone){
+define(['backbone','views/modal'], function (Backbone, ModalView){
 	var KeyHandler = Backbone.View.extend({
 		render: function() {
 			this.$el.html('<div> holaaa vista </div> <br> <input> </input>');
@@ -16,6 +16,11 @@ define(['backbone'], function (Backbone){
 				$.post("/api/fump", { 'timestamp' : timeStamp, 'id' : 12345 },
 				  function(data){
 				    console.log(data);
+				    var modalView = new ModalView({
+				    	contact: data
+				    });
+				    modalView.render();
+				    $('#content').html(modalView.el);
 				  }, "json");
 			}
 		}
