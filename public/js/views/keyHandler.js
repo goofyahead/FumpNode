@@ -15,7 +15,7 @@ define(['backbone'], function (Backbone){
 				console.log('space pressed, should call API ' + timeStamp);
 				$.post("/api/fump", { 'timestamp' : timeStamp, 'id' : 12345 },
 				  function(data){
-				    console.log(data); // John
+				    console.log(data);
 				  }, "json");
 			}
 		}

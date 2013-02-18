@@ -13,7 +13,7 @@ function check(currentTimeStamp, currentId, response) {
 	console.log('number of fumps in comparison' + fumpers.length);
 	fumpers.forEach( function (element){
 		console.log("compairing: " + Math.abs(currentTimeStamp - element.timeStamp));
-		if (Math.abs(currentTimeStamp - element.timeStamp) < 1000 ) {
+		if (Math.abs(currentTimeStamp - element.timeStamp) < 1000 && element.id != currentId) {
 			response.push(element);
 			console.log("added to reponse one match");
 		}
@@ -32,7 +32,7 @@ app.post('/api/fump', function (req, res){
 	console.log('looking for matches:');
 	console.log(req.body.timestamp);
 	
-	// if (response.length == 0) {
+	if (response.length == 0) {
 		setTimeout(function(){ 
 			check(currentTimeStamp, currentId, response);
 			console.log('delay check');
@@ -40,9 +40,9 @@ app.post('/api/fump', function (req, res){
 			res.send({'response_delayed': response});
 		}, 1000);
 
-	// } else {
-	// 	res.send({'response_ok': response});
-	// }
+	} else {
+		res.send({'response_ok': response});
+	}
 });
 
 app.listen(port);
