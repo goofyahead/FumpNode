@@ -10,7 +10,9 @@ app.configure(function(){
 var fumpers = [];
 
 function check(currentTimeStamp, currentId) {
+	console.log('number of fumps in comparison' + fumpers.length);
 	fumpers.forEach( function (element){
+		console.log("compairing: " + Math.abs(currentTimeStamp - element.timeStamp));
 		if (Math.abs(currentTimeStamp - element.timeStamp) < 1000 && element.id != currentId) {
 			response.push(element);
 		}
