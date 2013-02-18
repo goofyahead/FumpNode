@@ -9,7 +9,7 @@ app.configure(function(){
 
 var fumpers = [];
 
-function check(currentTimeStamp, currentId) {
+function check(currentTimeStamp, currentId, response) {
 	console.log('number of fumps in comparison' + fumpers.length);
 	fumpers.forEach( function (element){
 		console.log("compairing: " + Math.abs(currentTimeStamp - element.timeStamp));
