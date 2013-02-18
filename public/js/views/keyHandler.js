@@ -12,7 +12,7 @@ define(['backbone'], function (Backbone){
 		keyHandle: function(e) {
 			var timeStamp = new Date().getTime();
 			if (e.keyCode == 32) {
-				console.log('space pressed, should call API');
+				console.log('space pressed, should call API ' + timeStamp);
 				$.post("/api/fump", { 'timestamp' : timeStamp, 'id' : 12345 },
 				  function(data){
 				    console.log(data); // John
