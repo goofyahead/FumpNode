@@ -41,16 +41,16 @@ app.post('/api/fump', function (req, res){
 			console.log('number of fumps ' + fumpers.length);
 			res.send({'response_delayed': response});
 			setTimeout(function(){ 
-				var index = array.indexOf(currentElement);
-				array.splice(index, 1);
+				var index = fumpers.indexOf(currentElement);
+				fumpers.splice(index, 1);
 			},2000);
 		}, 1000);
 
 	} else {
 		res.send({'response_ok': response});
 		setTimeout(function(){ 
-			var index = array.indexOf(currentElement);
-			array.splice(index, 1);
+			var index = fumpers.indexOf(currentElement);
+			fumpers.splice(index, 1);
 		},2000);
 	}
 });
