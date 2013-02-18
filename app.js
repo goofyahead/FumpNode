@@ -11,7 +11,7 @@ var fumpers = [];
 
 function check(currentTimeStamp, currentId) {
 	fumpers.forEach( function (element){
-		if ((element.timeStamp - currentTimeStamp) < 1000 && element.id != currentId) {
+		if (Math.abs(currentTimeStamp - element.timeStamp) < 1000 && element.id != currentId) {
 			response.push(element);
 		}
 	});
@@ -33,6 +33,7 @@ app.post('/api/fump', function (req, res){
 		setTimeout(function(){ 
 			check(currentTimeStamp, currentId, response);
 			console.log('delay check');
+			console.log('number of fumps ' + fumpers.length);
 			res.send({'response_delayed': response});
 		}, 1000);
 
