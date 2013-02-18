@@ -11,7 +11,7 @@ var fumpers = [];
 
 function check(currentTimeStamp, currentId) {
 	fumpers.forEach( function (element){
-		if ((element.timeStamp - currentTimeStamp) < 600 && element.id != currentId) {
+		if ((element.timeStamp - currentTimeStamp) < 1000 && element.id != currentId) {
 			response.push(element);
 		}
 	});
