@@ -25,7 +25,9 @@ app.post('/api/fump', function (req, res){
 	var currentTimeStamp = req.body.timestamp;
 	var currentId = req.body.id;
 
-	fumpers.push({timeStamp : currentTimeStamp, id : currentId});
+	var currentElement = {timeStamp : currentTimeStamp, id : currentId};
+
+	fumpers.push(currentElement);
 
 	check(currentTimeStamp, currentId, response);
 
@@ -38,10 +40,18 @@ app.post('/api/fump', function (req, res){
 			console.log('delay check');
 			console.log('number of fumps ' + fumpers.length);
 			res.send({'response_delayed': response});
+			setTimeout(function(){ 
+				var index = array.indexOf(currentElement);
+				array.splice(index, 1);
+			},2000);
 		}, 1000);
 
 	} else {
 		res.send({'response_ok': response});
+		setTimeout(function(){ 
+			var index = array.indexOf(currentElement);
+			array.splice(index, 1);
+		},2000);
 	}
 });
 
