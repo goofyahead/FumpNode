@@ -16,9 +16,6 @@ define(['backbone'], function (Backbone){
 				$.post("/api/fump", { 'timestamp' : timeStamp, 'id' : 12345 },
 				  function(data){
 				    console.log(data);
-				    var modalView = new ModalView({
-				    	contact: data
-				    });
 				  }, "json");
 			}
 		}

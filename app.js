@@ -7,17 +7,18 @@ app.configure(function(){
 	app.use(express.bodyParser());
 });
 
-var fumpers = {};
+var fumpers = new Object();
 
 function check(currentTimeStamp, currentId, response) {
-	console.log('number of fumps in comparison' + fumpers.length);
-	fumpers.forEach( function (element){
-		console.log("compairing: " + Math.abs(currentTimeStamp - element.timeStamp));
-		if (Math.abs(currentTimeStamp - element.timeStamp) < 800 ) {
-			response.push(element);
-			console.log("added to reponse one match");
+	console.log('number of fumps in comparison ' + Object.keys(fumpers).length);
+	for (var key in fumpers) {
+		console.log("compairing: " + Math.abs(currentTimeStamp - fumpers[key].timeStamp));
+		if (Math.abs(currentTimeStamp - fumpers[key].timeStamp) < 800 && currentId != fumpers[key].id) {
+			var elementResponse = {timeStamp : fumpers[key].timeStamp, id : fumpers[key].id };
+			response.push(elementResponse);
+			console.log("added to reponse one match " + JSON.stringify(fumpers[key]));
 		}
-	});
+	}
 }
 
 app.post('/api/fump', function (req, res){
@@ -25,7 +26,7 @@ app.post('/api/fump', function (req, res){
 	var currentTimeStamp = req.body.timestamp;
 	var currentId = req.body.id;
 
-	var currentElement = {timeStamp : currentTimeStamp, id : currentId};
+	var currentElement = { timeStamp : currentTimeStamp, id : currentId };
 
 	var currentKey = currentTimeStamp+currentId;
 	fumpers[currentKey] = currentElement;
