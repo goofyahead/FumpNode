@@ -19,9 +19,9 @@ define(['backbone','views/modal_relations'], function (Backbone, ModalView){
 				    var modalView = new ModalView({
 				    	contact: data
 				    });
-				    modalView.render();
-				    $('#content').html(modalView.el);
-				    $('#myModal').modal();
+				    // modalView.render();
+				    // $('#content').html(modalView.el);
+				    // $('#myModal').modal();
 				  }, "json");
 			}
 		}

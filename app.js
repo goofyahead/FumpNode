@@ -7,7 +7,7 @@ app.configure(function(){
 	app.use(express.bodyParser());
 });
 
-var fumpers = [];
+var fumpers = {};
 
 function check(currentTimeStamp, currentId, response) {
 	console.log('number of fumps in comparison' + fumpers.length);
@@ -27,7 +27,8 @@ app.post('/api/fump', function (req, res){
 
 	var currentElement = {timeStamp : currentTimeStamp, id : currentId};
 
-	fumpers.push(currentElement);
+	var currentKey = currentTimeStamp+currentId;
+	fumpers[currentKey] = currentElement;
 
 	check(currentTimeStamp, currentId, response);
 
@@ -41,16 +42,13 @@ app.post('/api/fump', function (req, res){
 			console.log('number of fumps ' + fumpers.length);
 			res.send({'response_delayed': response});
 			setTimeout(function(){ 
-				var index = fumpers.indexOf(currentElement);
-				fumpers.splice(index, 1);
+				delete fumpers[currentKey];
 			},2000);
 		}, 1000);
-
 	} else {
 		res.send({'response_ok': response});
-		setTimeout(function(){ 
-			var index = fumpers.indexOf(currentElement);
-			fumpers.splice(index, 1);
+		setTimeout(function(){
+			delete fumpers[currentKey];
 		},2000);
 	}
 });

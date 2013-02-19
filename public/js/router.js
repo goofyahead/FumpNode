@@ -15,16 +15,16 @@ define(['backbone','views/keyHandler','views/modal'],
 
     index: function() {
       console.log("index called");
-      // var keyHandler = new KeyHandler();
-      // keyHandler.render();
-      // $('#content').html(keyHandler.el);
+      var keyHandler = new KeyHandler();
+      keyHandler.render();
+      $('#content').html(keyHandler.el);
 
-      var modalView = new ModalView();
-      modalView.render();
+      // var modalView = new ModalView();
+      // modalView.render();
 
-      var $modalEL = $("#modal");
+      // var $modalEL = $("#modal");
 
-      $('#modal').html(modalView.el);
+      // $('#modal').html(modalView.el);
       // $('#modal').modal();
     }
   });
