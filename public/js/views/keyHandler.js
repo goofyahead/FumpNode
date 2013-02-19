@@ -1,5 +1,5 @@
 
-define(['backbone','views/modal'], function (Backbone, ModalView){
+define(['backbone','views/modal_relations'], function (Backbone, ModalView){
 	var KeyHandler = Backbone.View.extend({
 		render: function() {
 			this.$el.html('<div> holaaa vista </div> <br> <input> </input>');
@@ -21,6 +21,7 @@ define(['backbone','views/modal'], function (Backbone, ModalView){
 				    });
 				    modalView.render();
 				    $('#content').html(modalView.el);
+				    $('#myModal').modal();
 				  }, "json");
 			}
 		}

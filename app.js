@@ -13,7 +13,7 @@ function check(currentTimeStamp, currentId, response) {
 	console.log('number of fumps in comparison' + fumpers.length);
 	fumpers.forEach( function (element){
 		console.log("compairing: " + Math.abs(currentTimeStamp - element.timeStamp));
-		if (Math.abs(currentTimeStamp - element.timeStamp) < 800 && element.id != currentId) {
+		if (Math.abs(currentTimeStamp - element.timeStamp) < 800 ) {
 			response.push(element);
 			console.log("added to reponse one match");
 		}

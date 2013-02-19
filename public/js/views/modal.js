@@ -3,21 +3,21 @@ define(['backbone','text!templates/modalFump.html'], function(Backbone,mytemplat
 
 	var ModalFump = Backbone.View.extend({
 		
-		template = _.template(mytemplate),
-		tagName: 'div',
-		id: 'modal',
+		template : _.template(mytemplate),
 
 		initialize: function(){
 			console.log("initializing modal fumper");
 		},
 
 		render: function(){
-			console.log(this.options.fumper);
-			var compiledTemplate = this.template({
-            	contact: this.options.contact.toJSON()
-        	});
+			console.log(this.options.contact);
+			var compiledTemplate = this.template();
 			this.$el.html(compiledTemplate);
 			return this;
+		},
+
+		open: function () {
+			this.$el.modal();
 		}
 	});
 

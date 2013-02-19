@@ -1,6 +1,6 @@
 //App router
-define(['jquery','underscore','backbone','views/keyHandler'],
-  function($, _, Backbone, KeyHandler) {
+define(['backbone','views/keyHandler','views/modal'],
+  function(Backbone, KeyHandler, ModalView) {
 
     var AppRouter = Backbone.Router.extend({
 
@@ -15,9 +15,17 @@ define(['jquery','underscore','backbone','views/keyHandler'],
 
     index: function() {
       console.log("index called");
-      var keyHandler = new KeyHandler();
-      keyHandler.render();
-      $('#content').html(keyHandler.el);
+      // var keyHandler = new KeyHandler();
+      // keyHandler.render();
+      // $('#content').html(keyHandler.el);
+
+      var modalView = new ModalView();
+      modalView.render();
+
+      var $modalEL = $("#modal");
+
+      $('#modal').html(modalView.el);
+      // $('#modal').modal();
     }
   });
 
